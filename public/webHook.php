@@ -6,7 +6,7 @@ if (empty($requestBody)) {              //判断数据是不是空
 }
 $webPath = '/www/wwwroot/zhibo.yangyonghui.com';
 $content = json_decode($requestBody, true);     //数据转换
-file_put_contents($webPath.'/git_web_hook.log', $requestBody, FILE_APPEND);//将每次拉取信息追加写入到日志里
+file_put_contents($webPath.'/git_web_hook.log', json_encode($content), FILE_APPEND);//将每次拉取信息追加写入到日志里
 //若是主分支且提交数大于0
 if ($content['ref']=='refs/heads/main') {
 
