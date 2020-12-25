@@ -8,6 +8,7 @@ $content = json_decode($requestBody, true);     //数据转换
 //若是主分支且提交数大于0
 if ($content['ref']=='refs/heads/main') {
     $webPath = '/www/wwwroot/zhibo.yangyonghui.com';
+
     //或将命令加入 shell里，看个人需求 git reset --hard origin/master && git clean -f
     $res = shell_exec('cd '.$webPath.' && echo `sudo git pull` >> '.$webPath.'/git_web_hook.log');//PHP函数执行git命令
     $res_log = '-------------------------'.PHP_EOL;
